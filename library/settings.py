@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'library-production-9190.up.railway.app',
-    'localhost:4200',
 ]
 
 
