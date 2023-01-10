@@ -28,11 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
     #'library-production-9190.up.railway.app',
     #'localhost:4200',
-    '181.128.26.101',
     '*'
 ]
 
-CORS_ALLOW_ALL_ORIGINS: True
 
 # Application definition
 
@@ -44,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
     'digitallibrary',
 ]
 
@@ -56,8 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'library.urls'
