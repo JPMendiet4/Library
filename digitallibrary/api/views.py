@@ -1,8 +1,9 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.response import Response
-from digitallibrary.models import Author, Books
+from rest_framework.authentication import authenticate
 
+from digitallibrary.models import Author, Books
 from digitallibrary.api.serializers import BooksSerializer, AuthorSerializer
 from digitallibrary.api.general_serializer import GeneralListApiView
 # Create your views here.
@@ -15,12 +16,14 @@ class AuthorViewSet(GeneralListApiView):
 
 class AuthorDetailAPIView(generics.RetrieveAPIView):
     """Read author. """
+    allowed_methods = ['get']
     serializer_class = AuthorSerializer
-    queryset = Author
+    queryset = Author.objects.all()
 
 
 class AuthorCreateAPIView(generics.CreateAPIView):
     """Create author"""
+    allowed_methods = ['post']
     serializer_class = AuthorSerializer
 
     def post(self, request):
