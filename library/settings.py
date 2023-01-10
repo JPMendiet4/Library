@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     'library-production-9190.up.railway.app',
     'localhost:4200',
     '181.128.26.101',
+    '*'
 ]
 
 
