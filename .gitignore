@@ -493,3 +493,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/virtualenv,python,django,windows,macos,linux,visualstudiocode,pycharm,git
 
+venv
