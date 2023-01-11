@@ -11,7 +11,8 @@ class AuthorSerializer(serializers.ModelSerializer):
         return {
             'id': instance.id,
             'name': instance.name,
-            'nationality': instance.nationality == 'Origen desconocido' if instance.nationality == '' else instance.nationality
+            'nationality': 'Origen desconocido' if instance.nationality == '' else instance.nationality
+
 
         }
 
