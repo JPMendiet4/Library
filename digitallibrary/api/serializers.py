@@ -7,6 +7,15 @@ class AuthorSerializer(serializers.ModelSerializer):
         model = Author
         fields = '__all__'
 
+    def to_representation(self, instance):
+        return {
+            'id': instance.id,
+            'name': instance.name,
+            'nationality': instance.nationality == 'Origen desconocido' if instance.nationality == '' else instance.nationality
+
+        }
+
+
 
 class BooksSerializer(serializers.ModelSerializer):
     class Meta:
