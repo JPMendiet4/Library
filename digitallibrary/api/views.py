@@ -13,7 +13,7 @@ class AuthorViewSet(GeneralListApiView):
     """Read Authors. """
     serializer_class = AuthorSerializer
 
-    def get(self):
+    def get(self, request):
         author = self.get_object()
         if author.nationality == '':
             author.nationality = 'Origen desconocido'
