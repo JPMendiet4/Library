@@ -1,5 +1,5 @@
 from django.urls import path
-from folder.digitallibrary.api.views import *
+from digitallibrary.api.views import *
 
 urlpatterns = [
     path('authors', AuthorViewSet.as_view(), name='Autores'),
