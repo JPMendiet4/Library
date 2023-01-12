@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import generics, status
+from rest_framework import generics, serializers, status
 from rest_framework.response import Response
-from rest_framework.authentication import authenticate
+
 
 from digitallibrary.models import Author, Books
 from digitallibrary.api.serializers import BooksSerializer, AuthorSerializer
@@ -14,7 +14,6 @@ class AuthorViewSet(GeneralListApiView):
     serializer_class = AuthorSerializer
 
 
-
 class AuthorDetailAPIView(generics.RetrieveAPIView):
     """Read author. """
     allowed_methods = ['get']
@@ -24,16 +23,19 @@ class AuthorDetailAPIView(generics.RetrieveAPIView):
 
 class AuthorCreateAPIView(generics.CreateAPIView):
     """Create author"""
-    allowed_methods = ['post']
     serializer_class = AuthorSerializer
 
+    def perform_create(self, serializer):
+        name = serializer.validated_data['name']
+        if Author.objects.filter(name=name).exists():
+            raise serializers.ValidationError({'name': 'Author with this name already exists.'})
+        serializer.save()
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            self.perform_create(serializer)
             return Response({'message': 'Autor agregado correctamente'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class AuthorDeleteAPIView(generics.DestroyAPIView):
     """Delete author. """
@@ -62,15 +64,18 @@ class BooksViewSet(GeneralListApiView):
 class BooksCreateAPIView(generics.CreateAPIView):
     """Create book. """
     serializer_class = BooksSerializer
+    def perform_create(self, serializer):
+        title = serializer.validated_data['title']
+        if Books.objects.filter(title=title).exists():
+            raise serializers.ValidationError({'title': 'Book with this title already exists.'})
+        serializer.save()
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response({'message': 'Libro agregado correctamente'}, status=status.HTTP_201_CREATED)
+            self.perform_create(serializer)
+            return Response({'message': 'Book agregado correctamente'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
 class BookDeleteAPIView(generics.DestroyAPIView):
     """Delete book. """
     queryset = Books.objects.all()

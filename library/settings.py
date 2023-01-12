@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+fq+znb6#!eyfq%izwv84046&!7z3*cmfg8ro=o%$+r%2e*%!2
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'library-production-9190.up.railway.app',
+    '*'
 ]
 
 
