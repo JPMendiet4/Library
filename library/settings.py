@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'digitallibrary',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -123,6 +125,24 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+CORS_ALLOWED_ORIGINS = [
+    'https://example.com',
+    'https://sub.example.com',
+    'http://localhost:8080',
+    'http://127.0.0.1:9000',
+    'https://library-production-9190.up.railway.app/',
+    'http://181.128.26.101/'
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'https://example.com',
+    'https://sub.example.com',
+    'http://localhost:8080',
+    'http://127.0.0.1:9000',
+    'https://library-production-9190.up.railway.app/',
+    'http://181.128.26.101/'
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
