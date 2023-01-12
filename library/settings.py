@@ -25,9 +25,7 @@ SECRET_KEY = 'django-insecure-+fq+znb6#!eyfq%izwv84046&!7z3*cmfg8ro=o%$+r%2e*%!2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '*'
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,12 +75,14 @@ WSGI_APPLICATION = 'library.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# mysql://:@:/
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': 'cXLMHfCvuDhL1LFfEqlR',
+        'PASSWORD': 'fmwsB8ubwsC67Az7GJWJ',
         'HOST': 'containers-us-west-182.railway.app',
         'PORT': '6503',
     }
