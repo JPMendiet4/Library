@@ -132,7 +132,6 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
     'http://127.0.0.1:9000',
     'https://library-production-9190.up.railway.app/',
-    'http://181.128.26.101/'
 ]
 
 CORS_ORIGIN_WHITELIST = [
@@ -141,7 +140,6 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8080',
     'http://127.0.0.1:9000',
     'https://library-production-9190.up.railway.app/',
-    'http://181.128.26.101/'
 ]
 
 # Static files (CSS, JavaScript, Images)
