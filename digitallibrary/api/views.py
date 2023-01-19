@@ -102,3 +102,12 @@ class BookUpdateAPIView(generics.UpdateAPIView):
         author = get_object_or_404(self.queryset, pk=pk)
         serializer = self.serializer_class(author)
         return Response(serializer.data)
+
+
+class AuthorBooksView(generics.ListAPIView):
+    queryset = Books.objects.all()
+    serializer_class = BooksSerializer
+
+    def get_queryset(self):
+        author = self.kwargs['pk']
+        return Books.objects.filter(author=author)

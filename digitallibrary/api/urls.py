@@ -11,4 +11,5 @@ urlpatterns = [
     path('books/create', BooksCreateAPIView.as_view(), name='Crear libro'),
     path('book/delete/<int:pk>', BookDeleteAPIView.as_view(), name='Eliminar libro'),
     path('book/update/<int:pk>/', BookUpdateAPIView.as_view(), name='Actualizar libro'),
+    path('author-books/<int:pk>/', AuthorBooksView.as_view(), name='Libros de autor')
     ]
